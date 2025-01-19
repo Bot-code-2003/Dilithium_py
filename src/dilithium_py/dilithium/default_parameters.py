@@ -47,7 +47,7 @@ if __name__ == "__main__":
     public_key, private_key = Dilithium2.keygen()
 
     # Signing and extracting z
-    signature = Dilithium2.sign(private_key, message)
+    signature, z = Dilithium2.sign(private_key, message)
 
     # Verifying the signature
     is_valid = Dilithium2.verify(public_key, message, signature)

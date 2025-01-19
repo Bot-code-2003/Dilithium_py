@@ -34,10 +34,9 @@ def benchmark_dilithium(Dilithium, name, count):
         keygen_times.append(time() - t0)
 
         t1 = time()
-        # sig, z = Dilithium.sign(sk, m)
-        sig = Dilithium.sign(sk, m)
+        sig, z = Dilithium.sign(sk, m)
         sign_times.append(time() - t1)
-        # z_values.append(z)  # Collect z for averaging
+        z_values.append(z)  # Collect z for averaging
 
         t2 = time()
         verify = Dilithium.verify(pk, m, sig)
@@ -62,8 +61,8 @@ def benchmark_dilithium(Dilithium, name, count):
 
     # Compute the average of z
     # print(z_values)
-    # avg_z = sum(z_values) // len(z_values)
-    # print(f"Average z: {avg_z}")
+    avg_z = sum(z_values) // len(z_values)
+    print(f"Average z: {avg_z}")
 
 
 if __name__ == "__main__":

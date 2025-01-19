@@ -417,11 +417,11 @@ class Dilithium:
             """
             if h.sum_hint() > self.omega:
                 continue
-            # total_hw_z = 0
-            # for idx, polynomial in enumerate(z._data):
-            #     hw = polynomial[0].calculate_polynomial_hamming_weight()
-            #     total_hw_z += hw
-            # return self._pack_sig(c_tilde, z, h), total_hw_z
+            total_hw_z = 0
+            for idx, polynomial in enumerate(z._data):
+                hw = polynomial[0].calculate_polynomial_hamming_weight()
+                total_hw_z += hw
+            return self._pack_sig(c_tilde, z, h), total_hw_z
             return self._pack_sig(c_tilde, z, h)
 
     def verify(self, pk_bytes, m, sig_bytes):
